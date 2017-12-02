@@ -1,0 +1,51 @@
+% David Watson
+% 12/1/17
+% Machine Learning
+close all
+clear; clc
+
+% Calculating 4
+% Tweets 4
+
+% Calculating4 was the final function used to determine the wieght of each
+% tweet.
+% Tweets 4 goes through the actual weighing of each tweet and then gives
+% out a data table with the tweets weight for all 100.
+% I split up the first 40 tweets for the training phase.
+% Valuestrain has the values of the tweets and Labelstest has the label for
+% each.
+% In the labels S signifies sick and N signifies not sick.
+% I then used matlabs fitctree to make a 
+
+
+labels = 'Labelstrain.xlsx';
+[num, txt, raw] = xlsread(labels);
+SN = txt(:,1);
+values = 'Valuestrain.xlsx';
+[num, txt, raw] = xlsread(values);
+V = num;
+
+tree = fitctree(V,SN);
+
+MdlDefault = fitctree(V,SN,'CrossVal','on');
+
+view(MdlDefault.Trained{6},'Mode','graph')
+testvalues = 'Valuestest.xlsx';
+[num, txt, raw] = xlsread(testvalues);
+TV = num;
+
+label6 = predict(MdlDefault.Trained{6},TV);
+
+
+labeled = 'Labelstest.xlsx';
+[num, txt, raw] = xlsread(labeled);
+SNT = txt(:,1);
+
+correctness6 = strcmp(SNT,label6);
+correct6 = sum(correctness6);
+
+
+
+%Split of 6 seems to be the best to get the most correct results out of
+%all had the best out of cases test. 
+

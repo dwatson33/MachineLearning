@@ -33,6 +33,9 @@
 % Project contians the final code for my project and descriptions of the
 % files I used.
 
+% Redoing used k neerest neighbor to classify points, which in the end was
+% less correct than the others
+
 % Testing, Testingagain, TestingIT, & TestingTesting123 are all files that
 % I used to test out different parts of my project, so that I didn't have
 % to do all at once and could test quickly.
